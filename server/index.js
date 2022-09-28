@@ -3,6 +3,7 @@ import api from './settings/api.settings.js'
 import {ApolloServer} from 'apollo-server-express'
 import express from 'express'
 import {allResolvers, allTypeDefs} from './helpers/graphql.helper.js'
+import {setupRoutes} from './routes/routes.js'
 
 /**
  * Variable used to start/stop the server for tests purposes.
@@ -13,6 +14,7 @@ const getExpressApp = () => {
     const app = express()
     app.disable('x-powered-by')
     app.use(express.json())
+    setupRoutes(app)
     return app
 }
 
